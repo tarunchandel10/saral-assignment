@@ -2,8 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isModalOpen: false,
-  step: 1,
-  rewardType: null,
+  rewardEvent: null,
+  rewardWith: null,
+
+  // ✅ NEW STATES
+  tier: null,
+  isTierModalOpen: false,
 };
 
 const rewardSlice = createSlice({
@@ -16,16 +20,40 @@ const rewardSlice = createSlice({
     closeModal: (state) => {
       state.isModalOpen = false;
     },
-    setStep: (state, action) => {
-      state.step = action.payload;
+
+    setRewardEvent: (state, action) => {
+      state.rewardEvent = action.payload;
     },
-    setRewardType: (state, action) => {
-      state.rewardType = action.payload;
+
+    setRewardWith: (state, action) => {
+      state.rewardWith = action.payload;
+    },
+
+    // ✅ NEW REDUCERS
+    setTier: (state, action) => {
+      state.tier = action.payload;
+    },
+
+    openTierModal: (state) => {
+      state.isTierModalOpen = true;
+    },
+
+    closeTierModal: (state) => {
+      state.isTierModalOpen = false;
     },
   },
 });
 
-export const { openModal, closeModal, setStep, setRewardType } =
-  rewardSlice.actions;
+export const {
+  openModal,
+  closeModal,
+  setRewardEvent,
+  setRewardWith,
+
+  // ✅ EXPORT NEW ACTIONS
+  setTier,
+  openTierModal,
+  closeTierModal,
+} = rewardSlice.actions;
 
 export default rewardSlice.reducer;

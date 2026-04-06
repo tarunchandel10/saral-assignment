@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setRewardType } from "../../redux/slices/rewardSlice";
+import { setRewardType, setStep } from "../../redux/slices/rewardSlice";
 
 export default function RewardTypeSelector() {
   const dispatch = useDispatch();
@@ -16,7 +16,10 @@ export default function RewardTypeSelector() {
       {types.map((type) => (
         <div
           key={type.id}
-          onClick={() => dispatch(setRewardType(type.id))}
+          onClick={() => {
+            dispatch(setRewardType(type.id));
+            dispatch(setStep(2)); // 🔥 IMPORTANT
+          }}
           className={`border rounded-xl p-4 cursor-pointer transition ${
             rewardType === type.id
               ? "border-purple-600 bg-purple-50"
