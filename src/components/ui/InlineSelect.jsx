@@ -43,6 +43,38 @@ export default function InlineSelect({
     return value === opt.value;
   };
 
+  const getDynamicLabel = (opt) => {
+  if (!value) return opt.label;
+
+  // Cross $X
+  if (opt.value === "Cross $X in sales" && value.includes("$")) {
+    return value;
+  }
+
+  // Flat $X
+  if (opt.value === "Flat $X bonus" && value.includes("$")) {
+    return value;
+  }
+
+  // Posts X times
+  if (
+    opt.value === "Posts X times per Y period" &&
+    value.startsWith("Posts")
+  ) {
+    return value;
+  }
+
+  // Upgrade Tier
+  if (
+    opt.value === "Upgrade Commission Tier" &&
+    value.startsWith("Upgrade to")
+  ) {
+    return value;
+  }
+
+  return opt.label;
+};
+
   return (
     <div ref={ref} className="border border-gray-200 rounded-lg overflow-hidden">
       
@@ -100,7 +132,7 @@ export default function InlineSelect({
                 >
                   <div className="flex items-center justify-between w-full group">
                     
-                    <span>{opt.label}</span>
+                    <span>{getDynamicLabel(opt)}</span>
 
                     <div className="flex items-center gap-2">
 
