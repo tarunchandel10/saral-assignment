@@ -1,23 +1,93 @@
+import { NavLink } from "react-router-dom";
+
 export default function MainLayout({ children }) {
   return (
     <div className="flex h-screen bg-gray-50">
       
       {/* Sidebar */}
-      <div className="w-64 bg-white border-r p-4">
+      <div className="w-64 bg-white border-r p-4 relative">
         <h2 className="text-lg font-semibold mb-6">Saral</h2>
 
-        <nav className="space-y-3 text-sm">
-          <p className="text-gray-500">Home</p>
-          <p className="text-gray-500">Insights</p>
+        <div className="space-y-2 text-sm">
 
-          <p className="bg-purple-100 text-purple-600 px-3 py-2 rounded-lg">
-            Gamification
-          </p>
+          {/* Home */}
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-3 py-2 rounded-lg ${
+                isActive
+                  ? "bg-purple-100 text-purple-600"
+                  : "text-gray-500 hover:bg-gray-100"
+              }`
+            }
+          >
+            <img src="/Home.svg" className="w-5 h-5" />
+            <span>Home</span>
+          </NavLink>
 
-          <p className="text-gray-500">Applications</p>
-          <p className="text-gray-500">Payments</p>
-        </nav>
+          {/* Insights */}
+          <NavLink
+            to="/insights"
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-3 py-2 rounded-lg ${
+                isActive
+                  ? "bg-purple-100 text-purple-600"
+                  : "text-gray-500 hover:bg-gray-100"
+              }`
+            }
+          >
+            <img src="/Brain.svg" className="w-5 h-5" />
+            <span>Insights</span>
+          </NavLink>
 
+          {/* Gamification ✅ FIXED */}
+          <NavLink
+            to="/gamification"
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-3 py-2 rounded-lg ${
+                isActive
+                  ? "bg-purple-100 text-purple-600"
+                  : "text-gray-500 hover:bg-gray-100"
+              }`
+            }
+          >
+            <img src="/Briefcase.svg" className="w-5 h-5" />
+            <span>Gamification</span>
+          </NavLink>
+
+          {/* Applications */}
+          <NavLink
+            to="/applications"
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-3 py-2 rounded-lg ${
+                isActive
+                  ? "bg-purple-100 text-purple-600"
+                  : "text-gray-500 hover:bg-gray-100"
+              }`
+            }
+          >
+            <img src="/applications.svg" className="w-5 h-5" />
+            <span>Applications</span>
+          </NavLink>
+
+          {/* Payments */}
+          <NavLink
+            to="/payments"
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-3 py-2 rounded-lg ${
+                isActive
+                  ? "bg-purple-100 text-purple-600"
+                  : "text-gray-500 hover:bg-gray-100"
+              }`
+            }
+          >
+            <img src="/Wallet.svg" className="w-5 h-5" />
+            <span>Payments</span>
+          </NavLink>
+
+        </div>
+
+        {/* Settings */}
         <div className="absolute bottom-4 text-sm text-gray-500">
           Settings
         </div>

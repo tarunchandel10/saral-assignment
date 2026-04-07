@@ -126,7 +126,7 @@ export default function InlineSelect({
                       : "cursor-pointer hover:bg-gray-100"
                   } ${
                     isSelected(opt)
-                      ? "bg-purple-50 text-purple-600"
+                      ? "bg-purple-50 text-[#C530C5]"
                       : ""
                   }`}
                 >
